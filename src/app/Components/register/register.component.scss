@@ -1,0 +1,44 @@
+.parent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .box{
+        position: relative;
+        label{
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            transition-duration: 2s;
+        }
+        input:focus+label{
+            transform: translate(10px,-20px);
+            color: black;
+            font-weight: bolder;
+            border-left: #86b7fe 2px solid;
+            border-right:#86b7fe 2px solid ;
+            padding: 2px;
+        }
+        input:valid+label{
+            transform: translate(10px,-20px);
+            color: black;
+            font-weight: bolder;
+            border-left: #86b7fe 2px solid;
+            border-right:#86b7fe 2px solid ;
+            padding: 2px;
+        }
+    }
+  
+    input{
+        width: 250px;
+        margin-top: 20px;
+    }
+    input:focus{
+        border: none;
+        outline: none;
+        border-color: white;
+    }
+    button{
+        margin:20px 0 0 80px;
+    }
+}
