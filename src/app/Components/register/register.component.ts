@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Services/user.service';
+import { passMatch } from 'src/app/Validators/pass.validator';
 
 @Component({
   selector: 'app-register',
@@ -17,21 +18,24 @@ export class RegisterComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router
   ) {
-    this.userReg = this.fb.group({
-      username: [
-        '',
-        [Validators.required, Validators.pattern('[A-Za-z0-9]{5,15}')],
-      ],
-      email: ['', [Validators.required, Validators.email]],
-      password: [
-        '',
-        [Validators.required, Validators.pattern('[A-Za-z0-9]{8,}')],
-      ],
-      cpassword: [
-        '',
-        [Validators.required, Validators.pattern('[A-Za-z0-9]{8,}')],
-      ],
-    });
+    this.userReg = this.fb.group(
+      {
+        username: [
+          '',
+          [Validators.required, Validators.pattern('[A-Za-z0-9]{5,15}')],
+        ],
+        email: ['', [Validators.required, Validators.email]],
+        password: [
+          '',
+          [Validators.required, Validators.pattern('[A-Za-z0-9]{8,}')],
+        ],
+        cpassword: [
+          '',
+          [Validators.required, Validators.pattern('[A-Za-z0-9]{8,}')],
+        ],
+      },
+      { validators: passMatch() }
+    );
   }
 
   ngOnInit(): void {}

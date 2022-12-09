@@ -87,6 +87,12 @@
         >
       </div>
     </div>
+    <div>
+      <small
+        *ngIf="userReg.errors?.['InvalidPass']&&userReg.get('cpassword')?.touched&&userReg.get('password')?.touched"
+        >Password doesn't match</small
+      >
+    </div>
     <button type="submit" class="btn btn-primary" [disabled]="userReg.invalid">
       Register
     </button>
